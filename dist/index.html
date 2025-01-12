@@ -53,7 +53,53 @@
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   <script defer src="main.bundle.js"></script></head>
-  <body>
+  <body tabindex="0">
+    <header class="headerStyle">
+      <h1>Book Finder</h1>
+    </header>
+
+    <div class="wrapperColumn">
+      <div class="gridBody">
+        <div class="rowTitle"><h1>Search Books by Category</h1></div>
+        <div class="rowSearchBar">
+          <form class="myForm">
+            <div class="textbox">
+              <input type="text" id="category" placeholder=" " required />
+              <label for="category">Scrivi una categoria di libri</label>
+              <div class="error" style="display: none">Campo obbligatorio!</div>
+            </div>
+          </form>
+        </div>
+        <div class="containerButton">
+          <button class="button" role="button">Search</button>
+        </div>
+        <div class="rowResults">
+          <p>
+            <h3>Title</h3>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam
+            maxime nulla cumque ut similique atque tempora labore voluptatibus
+            ab molestiae repellendus, in est unde nihil. Facilis maxime sint
+            cumque ipsa.
+          </p>
+          <p>
+            <h3>Title</h3>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
+            doloremque eligendi animi aliquam pariatur dolorum necessitatibus
+            fugiat, natus ab voluptates sapiente qui eius quidem voluptatem
+            autem saepe repudiandae, eum iure.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="extra">
+      <!--to send the footer at the bottom of the page when the content is not enough-->
+    </div>
+
+    <footer class="gridFooter">
+      <div class="rowSocialFooter"></div>
+      <div class="rowCopyright"></div>
+    </footer>
     <script defer src="/dist/main.bundle.js"></script>
   </body>
 </html>

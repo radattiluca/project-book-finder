@@ -1,5 +1,5 @@
-$bg-color: red;
-$color-text: grey;
+$bg-color: #065263; //sfumatura scuro di turchese.
+$color-text: #f9ad9c; //sfumatura chiaro di rosso
 
 * {
   box-sizing: border-box;
@@ -13,4 +13,45 @@ body {
   h1 {
     color: $color-text;
   }
+}
+
+.wrapperColumn {
+  display: flex;
+  justify-content: center; /* Center the grid container horizontally */
+  padding-top: 50px;
+}
+
+.headerStyle {
+  width: 100%;
+  text-align: center;
+  padding: 10px 0 20px 0;
+}
+
+.extra,
+.column-footer {
+  height: 300px; //to send the footer at the bottom of the page when the content is not enough
+}
+.gridBody {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 10px;
+
+  .rowResults {
+    max-width: 300px;
+    padding-top: 30px;
+
+    p {
+      padding: 5px;
+      color: $color-text;
+    }
+    h3 {
+      color: grey;
+    }
+  }
+}
+.gridFooter {
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  background-color: #f9ad9c;
 }
