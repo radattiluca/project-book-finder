@@ -33,7 +33,7 @@ module.exports = {
     new Dotenv(),
   ],
   devServer: {
-    port: 8000,
+    port: 3000,
     open: true,
     static: path.resolve(__dirname, "dist"),
   },

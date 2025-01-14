@@ -1,2 +1,113 @@
 require("../css/style.scss");
+require("../css/styleSearchBar.scss");
+const extractTitleString = require("../js/extractTitleString");
 const axios = require("axios");
+const _ = require("lodash");
+
+const conteinerResult = document.querySelector(".containerTitleAuthors");
+const categoryForm = document.querySelector("#category");
+let collectedData = [];
+
+document.addEventListener("click", function (event) {
+  if (event.target.tagName === "BUTTON") {
+    console.log(event.target.tagName);
+    event.preventDefault();
+    let valueInput = categoryForm.value.toLowerCase();
+    // Generate the URL based on the input provided by the client
+    let newUrl = new URL(
+      `${valueInput}.json`,
+      "https://openlibrary.org/subjects/"
+    );
+
+    // Axios request to the API at https://openlibrary.org for the category chosen by the user
+    axios
+      .get(newUrl)
+      .then((response) => {
+        let resp = response.data; // Access response data
+
+        let authors = _.get(resp, "works", []); // Extract the array of objects containing authors and book titles
+
+        console.log(authors);
+        conteinerResult.innerHTML = "";
+        // Iterate over the authors array to get titles, authors, and keys
+        authors.forEach((element) => {
+          let objAuthors = _.get(element, "authors[0].name", "sconosciuto");
+          let objTitle = _.get(element, "title", "sconosciuto");
+          let objKey = _.get(element, "key", "sconosciuto");
+          // Create an array of objects with corresponding title, author, and key
+          collectedData.push({
+            title: objTitle,
+            authors: objAuthors,
+            key: objKey,
+          });
+          // Populate the containerResult with the titles and authors of the books from the category entered by the user
+          conteinerResult.innerHTML += `<li>${objTitle} - ${objAuthors} </li>`;
+        });
+      })
+      // Handle errors when fetching data
+      .catch((error) => {
+        console.error(error);
+        console.log("qui gestiamo l'errore");
+      });
+  }
+  if (event.target.tagName === "LI") {
+    // Handle the event when a book is clicked
+    let keyBook = "";
+
+    let valueLi = event.target.textContent; // Retrieve the name from the clicked <li>
+
+    // Extract the string before the "-" character to get only the book title without the author
+
+    const extractedTitle = extractTitleString(valueLi, " - ");
+    console.log(extractedTitle);
+
+    // Compare the extracted string with the collectedData array
+    const foundBook = collectedData.find(
+      (element) => element.title === extractedTitle
+    );
+    // If a match is found, return the key associated with the book; otherwise, display an error message
+
+    if (foundBook) {
+      console.log("Book found:", foundBook.key);
+      keyBook = foundBook.key;
+      console.log(keyBook);
+    } else {
+      console.log("Book not found");
+    }
+    // Generate the URL based on the client's click on a title
+
+    let newUrlDetails = new URL(
+      `${keyBook}.json?details=true`,
+      "https://openlibrary.org/"
+    );
+    // Make a request to the API for the book's description
+
+    axios
+      .get(newUrlDetails)
+      .then((response) => {
+        let respDetails = response.data;
+
+        conteinerResult.innerHTML = "";
+        // Handle cases where respDetails is not present or is indirectly contained in the response
+
+        if (respDetails.description === undefined) {
+          conteinerResult.innerHTML += `<p><h3>Description ${valueLi}</h3>
+        Descrizione non presente, per maggiori info visitare il sito: 
+        <a href="https://openlibrary.org" target="_blank" rel="noopener noreferrer">openLibrary.org</a>
+      </p>`;
+        } else if (
+          typeof respDetails.description === "object" &&
+          respDetails.description.value
+        ) {
+          conteinerResult.innerHTML += `<p> <h3>${valueLi}</h3>${respDetails.description.value} </p>`;
+        } else {
+          conteinerResult.innerHTML += `<p> <h3>${valueLi}</h3>${respDetails.description} </p>`;
+        }
+      })
+
+      .catch((error) => {
+        console.error(error);
+        console.log("qui gestiamo l'errore");
+      });
+  }
+});

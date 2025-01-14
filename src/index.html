@@ -61,9 +61,25 @@
     <div class="wrapperColumn">
       <div class="gridBody">
         <div class="rowTitle"><h1>Search Books by Category</h1></div>
-        <div class="rowSearchBar"></div>
-        <div class="rowResults"></div>
+        <div class="rowSearchBar">
+          <form class="myForm">
+            <div class="textbox">
+              <input type="text" id="category" placeholder=" " required />
+              <label for="category">Type a book category</label>
+              <div class="error" style="display: none">Campo obbligatorio!</div>
+              <button class="myButton" type="submit">Search</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="rowResults">
+          <ul class="containerTitleAuthors"></ul>
+        </div>
       </div>
+    </div>
+
+    <div class="extra">
+      <!--to send the footer at the bottom of the page when the content is not enough-->
     </div>
 
     <footer class="gridFooter">
