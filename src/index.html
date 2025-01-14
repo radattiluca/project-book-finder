@@ -65,17 +65,15 @@
           <form class="myForm">
             <div class="textbox">
               <input type="text" id="category" placeholder=" " required />
-              <label for="category">Scrivi una categoria di libri</label>
+              <label for="category">Type a book category</label>
               <div class="error" style="display: none">Campo obbligatorio!</div>
+              <button class="myButton" type="submit">Search</button>
             </div>
           </form>
         </div>
-        <div class="containerButton">
-          <button class="button" role="button">Search</button>
-        </div>
+
         <div class="rowResults">
-          <p class="authors"></p>
-          <p class="title"></p>
+          <ul class="containerTitleAuthors"></ul>
         </div>
       </div>
     </div>

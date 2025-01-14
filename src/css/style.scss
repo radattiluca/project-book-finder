@@ -9,6 +9,7 @@ $color-text: #f9ad9c; //sfumatura chiaro di rosso
 
 body {
   background-color: $bg-color;
+  //height: 100vh;
 
   h1 {
     color: $color-text;
@@ -40,16 +41,40 @@ body {
     max-width: 300px;
     padding-top: 30px;
 
-    p {
-      padding: 5px;
-      color: $color-text;
-      height: auto;
-    }
     h3 {
+      color: gray;
+      padding: 0 0 7px 0;
+    }
+
+    a {
       color: grey;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      color: $color-text;
+      width: 100%;
+      list-style-type: none;
+
+      li {
+        cursor: pointer;
+        padding: 5px;
+        &:hover {
+          color: grey;
+        }
+      }
     }
   }
 }
+.rowSearchBar {
+  .textbox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
 .gridFooter {
   display: flex;
   flex-direction: row;
