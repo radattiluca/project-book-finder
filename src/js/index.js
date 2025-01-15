@@ -1,10 +1,11 @@
-require("../css/style.scss");
-require("../css/styleSearchBar.scss");
-const extractTitleString = require("../js/extractTitleString");
-const axios = require("axios");
-const _ = require("lodash");
+import "../scss/style.scss";
+import "../scss/styleSearchBar.scss";
+import extractTitleString from "../js/extractTitleString";
+import axios from "axios";
+import _ from "lodash";
 
-const conteinerResult = document.querySelector(".containerTitleAuthors");
+const containerResult = document.querySelector(".containerTitleAuthors");
+const containerCoverBook = document.querySelector(".containerCoverBook");
 const categoryForm = document.querySelector("#category");
 let collectedData = [];
 
@@ -28,20 +29,23 @@ document.addEventListener("click", function (event) {
         let authors = _.get(resp, "works", []); // Extract the array of objects containing authors and book titles
 
         console.log(authors);
-        conteinerResult.innerHTML = "";
+        containerCoverBook.innerHTML = "";
+        containerResult.innerHTML = "";
         // Iterate over the authors array to get titles, authors, and keys
         authors.forEach((element) => {
-          let objAuthors = _.get(element, "authors[0].name", "sconosciuto");
-          let objTitle = _.get(element, "title", "sconosciuto");
-          let objKey = _.get(element, "key", "sconosciuto");
+          let objAuthors = _.get(element, "authors[0].name", "unknown");
+          let objTitle = _.get(element, "title", "unknown");
+          let objKey = _.get(element, "key", "unknown");
+          let objIdCover = _.get(element, "cover_id", "unknown");
           // Create an array of objects with corresponding title, author, and key
           collectedData.push({
             title: objTitle,
             authors: objAuthors,
             key: objKey,
+            coverId: objIdCover,
           });
           // Populate the containerResult with the titles and authors of the books from the category entered by the user
-          conteinerResult.innerHTML += `<li>${objTitle} - ${objAuthors} </li>`;
+          containerResult.innerHTML += `<li>${objTitle} - ${objAuthors} </li>`;
         });
       })
       // Handle errors when fetching data
@@ -53,6 +57,7 @@ document.addEventListener("click", function (event) {
   if (event.target.tagName === "LI") {
     // Handle the event when a book is clicked
     let keyBook = "";
+    let numCover = "";
 
     let valueLi = event.target.textContent; // Retrieve the name from the clicked <li>
 
@@ -69,8 +74,9 @@ document.addEventListener("click", function (event) {
 
     if (foundBook) {
       console.log("Book found:", foundBook.key);
+      console.log("Number cover id found:", foundBook.coverId);
       keyBook = foundBook.key;
-      console.log(keyBook);
+      numCover = foundBook.coverId;
     } else {
       console.log("Book not found");
     }
@@ -87,22 +93,24 @@ document.addEventListener("click", function (event) {
       .then((response) => {
         let respDetails = response.data;
 
-        conteinerResult.innerHTML = "";
+        containerResult.innerHTML = "";
         // Handle cases where respDetails is not present or is indirectly contained in the response
-
-        if (respDetails.description === undefined) {
-          conteinerResult.innerHTML += `<p><h3>Description ${valueLi}</h3>
+        setTimeout(() => {
+          if (respDetails.description === undefined) {
+            containerResult.innerHTML += `<p><h3>Description ${valueLi}</h3>
         Descrizione non presente, per maggiori info visitare il sito: 
         <a href="https://openlibrary.org" target="_blank" rel="noopener noreferrer">openLibrary.org</a>
       </p>`;
-        } else if (
-          typeof respDetails.description === "object" &&
-          respDetails.description.value
-        ) {
-          conteinerResult.innerHTML += `<p> <h3>${valueLi}</h3>${respDetails.description.value} </p>`;
-        } else {
-          conteinerResult.innerHTML += `<p> <h3>${valueLi}</h3>${respDetails.description} </p>`;
-        }
+          } else if (
+            typeof respDetails.description === "object" &&
+            respDetails.description.value
+          ) {
+            containerResult.innerHTML += `<p> <h3>${valueLi}</h3>${respDetails.description.value} </p>`;
+          } else {
+            containerResult.innerHTML += `<p> <h3>${valueLi}</h3>${respDetails.description} </p>`;
+          }
+        }, 2000);
+        containerCoverBook.innerHTML += `<img src="https://covers.openlibrary.org/b/id/${numCover}-M.jpg" alt="${valueLi}">`;
       })
 
       .catch((error) => {
