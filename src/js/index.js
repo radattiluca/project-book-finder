@@ -44,9 +44,12 @@ document.addEventListener("click", function (event) {
             key: objKey,
             coverId: objIdCover,
           });
-          // Populate the containerResult with the titles and authors of the books from the category entered by the user
-          containerResult.innerHTML += `<li>${objTitle} - ${objAuthors} </li>`;
+          return collectedData;
         });
+
+        console.log(collectedData[0].title);
+        // Populate the containerResult with the titles and authors of the books from the category entered by the user
+        containerResult.innerHTML += `<li>${objTitle} - ${objAuthors} </li>`;
       })
       // Handle errors when fetching data
       .catch((error) => {

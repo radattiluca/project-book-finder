@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 
 module.exports = {
-  mode: "production",
+  mode: "development",
   devtool: "eval-source-map",
   entry: {
     index: "./src/js/index.js",
