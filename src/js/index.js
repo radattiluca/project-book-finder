@@ -20,7 +20,7 @@ document.addEventListener("click", function (event) {
       throw new Error("Enter a category first");
     }
     if (valueInput.includes(" ")) {
-      console.log("si include uno spazio"); //per il debug
+      console.log("Include space"); //per il debug
       valueInput = spaceRemover(valueInput);
       console.log(valueInput); //per il debug
     }

@@ -1,10 +1,9 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
-const { optimize } = require("webpack");
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
-  mode: "production",
   devtool: "eval-source-map",
   entry: {
     index: "./src/js/index.js",
@@ -12,13 +11,14 @@ module.exports = {
   module: {
     rules: [
       {
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: "babel-loader",
-          },
-        ],
         test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+          },
+        },
       },
       {
         test: /\.(css|s[ac]ss)$/i,
@@ -30,6 +30,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "Book Finder",
       template: "./src/index.html",
+      minify: {
+        collapseWhitespace: true, // Minimizza gli spazi vuoti
+        removeComments: true, // Rimuovi i commenti
+        removeRedundantAttributes: true,
+      },
     }),
     new Dotenv(),
   ],
@@ -41,5 +46,16 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].bundle.js",
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          compress: true,
+          mangle: true,
+        },
+      }),
+    ],
   },
 };
