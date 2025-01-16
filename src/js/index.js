@@ -2,6 +2,7 @@ import "../scss/style.scss";
 import "../scss/styleSearchBar.scss";
 import stringExtractor from "./stringExtractor";
 import spaceRemover from "./spaceRemover";
+import handleDescription from "./handleDescription";
 import axios from "axios";
 import _ from "lodash";
 
@@ -106,26 +107,9 @@ document.addEventListener("click", function (event) {
         containerResult.innerHTML = "";
         // Handle cases where respDetails is not present or is indirectly contained in the response
         setTimeout(() => {
-          if (respDetails.description === undefined) {
-            containerResult.innerHTML += `<p><h3>Description ${valueLi}</h3>
-        Descrizione non presente, per maggiori info visitare il sito: 
-        <a href="https://openlibrary.org" target="_blank" rel="noopener noreferrer">openLibrary.org</a>
-      </p>`;
-          } else if (
-            typeof respDetails.description === "object" &&
-            respDetails.description.value
-          ) {
-            console.log(respDetails.description.value); //for debug
-            containerResult.innerHTML += `<p> <h3>${valueLi}</h3>${respDetails.description.value} </p>`;
-          } else {
-            const extractedDetails = stringExtractor(
-              respDetails.description,
-              "Also contained in"
-            );
-            containerResult.innerHTML += `<p> <h3>${valueLi}</h3>${extractedDetails} </p>`;
-          }
+          handleDescription(respDetails, valueLi, containerResult);
         }, 2000);
-        containerCoverBook.innerHTML += `<img src="https://covers.openlibrary.org/b/id/${numCover}-M.jpg" alt="${valueLi}">`;
+        containerCoverBook.innerHTML += `<img src="https://covers.openlibrary.org/b/id/${numCover}-M.jpg?default=true" alt="${valueLi}">`;
       })
 
       .catch((error) => {
