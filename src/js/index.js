@@ -12,14 +12,17 @@ const collectedData = [];
 
 document.addEventListener("click", function (event) {
   if (event.target.tagName === "BUTTON") {
-    console.log(event.target.tagName);
+    console.log(event.target.tagName); //per il debug
     event.preventDefault();
+    /**Here we take the valueInput value and pass it through conditions to make it arrive perfect when inserted into the URL */
     let valueInput = categoryForm.value.toLowerCase();
-
+    if (valueInput === "") {
+      throw new Error("enter a category first");
+    }
     if (valueInput.includes(" ")) {
-      console.log("si include uno spazio");
+      console.log("si include uno spazio"); //per il debug
       valueInput = spaceRemover(valueInput);
-      console.log(valueInput);
+      console.log(valueInput); //per il debug
     }
     // Generate the URL based on the input provided by the client
     let newUrl = new URL(
@@ -31,9 +34,12 @@ document.addEventListener("click", function (event) {
     // Axios request to the API at https://openlibrary.org for the category chosen by the user
     axios.get(newUrl).then((response) => {
       let resp = response.data; // Access response data
+      console.log(resp); //for debug
 
       let authors = _.get(resp, "works", []); // Extract the array of objects containing authors and book titles
-
+      if (authors.length === 0) {
+        throw new Error("the category entered is invalid");
+      }
       console.log(authors);
       containerCoverBook.innerHTML = "";
       containerResult.innerHTML = "";
@@ -79,7 +85,7 @@ document.addEventListener("click", function (event) {
       keyBook = foundBook.key;
       numCover = foundBook.coverId;
     } else {
-      console.log("Book not found");
+      throw new Error("Book not found");
     }
     // Generate the URL based on the client's click on a title
 
@@ -109,11 +115,8 @@ document.addEventListener("click", function (event) {
             typeof respDetails.description === "object" &&
             respDetails.description.value
           ) {
-            const extractedDetails = stringExtractor(
-              respDetails.description,
-              "Also contained in"
-            );
-            containerResult.innerHTML += `<p> <h3>${valueLi}</h3>${extractedDetails} </p>`;
+            console.log(respDetails.description.value); //for debug
+            containerResult.innerHTML += `<p> <h3>${valueLi}</h3>${respDetails.description.value} </p>`;
           } else {
             const extractedDetails = stringExtractor(
               respDetails.description,
@@ -126,8 +129,8 @@ document.addEventListener("click", function (event) {
       })
 
       .catch((error) => {
-        console.error(error);
-        console.log("qui gestiamo l'errore");
+        console.error(error.message);
+        throw err;
       });
   }
 });
