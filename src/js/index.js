@@ -1,6 +1,7 @@
 import "../scss/style.scss";
 import "../scss/styleSearchBar.scss";
 import stringExtractor from "./stringExtractor";
+import spaceRemover from "./spaceRemover";
 import axios from "axios";
 import _ from "lodash";
 
@@ -14,12 +15,19 @@ document.addEventListener("click", function (event) {
     console.log(event.target.tagName);
     event.preventDefault();
     let valueInput = categoryForm.value.toLowerCase();
+
+    if (valueInput.includes(" ")) {
+      console.log("si include uno spazio");
+      valueInput = spaceRemover(valueInput);
+      console.log(valueInput);
+    }
     // Generate the URL based on the input provided by the client
     let newUrl = new URL(
       `${valueInput}.json`,
       "https://openlibrary.org/subjects/"
     );
 
+    console.log(valueInput);
     // Axios request to the API at https://openlibrary.org for the category chosen by the user
     axios.get(newUrl).then((response) => {
       let resp = response.data; // Access response data
@@ -85,25 +93,32 @@ document.addEventListener("click", function (event) {
       .get(newUrlDetails)
       .then((response) => {
         let respDetails = response.data;
-        const extractedDetails = stringExtractor(
-          respDetails.description,
-          "Also contained in"
-        );
+        const extractedDetails = "";
+        console.log(respDetails.description);
+
         console.log(extractedDetails);
         containerResult.innerHTML = "";
         // Handle cases where respDetails is not present or is indirectly contained in the response
         setTimeout(() => {
-          if (extractedDetails === undefined) {
+          if (respDetails.description === undefined) {
             containerResult.innerHTML += `<p><h3>Description ${valueLi}</h3>
         Descrizione non presente, per maggiori info visitare il sito: 
         <a href="https://openlibrary.org" target="_blank" rel="noopener noreferrer">openLibrary.org</a>
       </p>`;
           } else if (
-            typeof extractedDetails === "object" &&
+            typeof respDetails.description === "object" &&
             respDetails.description.value
           ) {
+            const extractedDetails = stringExtractor(
+              respDetails.description,
+              "Also contained in"
+            );
             containerResult.innerHTML += `<p> <h3>${valueLi}</h3>${extractedDetails} </p>`;
           } else {
+            const extractedDetails = stringExtractor(
+              respDetails.description,
+              "Also contained in"
+            );
             containerResult.innerHTML += `<p> <h3>${valueLi}</h3>${extractedDetails} </p>`;
           }
         }, 2000);
