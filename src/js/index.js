@@ -17,7 +17,7 @@ document.addEventListener("click", function (event) {
     /**Here we take the valueInput value and pass it through conditions to make it arrive perfect when inserted into the URL */
     let valueInput = categoryForm.value.toLowerCase();
     if (valueInput === "") {
-      throw new Error("enter a category first");
+      throw new Error("Enter a category first");
     }
     if (valueInput.includes(" ")) {
       console.log("si include uno spazio"); //per il debug

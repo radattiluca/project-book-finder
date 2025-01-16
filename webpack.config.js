@@ -1,9 +1,10 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
+const { optimize } = require("webpack");
 
 module.exports = {
-  mode: "development",
+  mode: "production",
   devtool: "eval-source-map",
   entry: {
     index: "./src/js/index.js",
