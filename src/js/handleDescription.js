@@ -1,3 +1,4 @@
+/** In this function we manage the description in the various cases that may occur to us*/
 import stringExtractor from "./stringExtractor";
 
 export default function handleDescription(
@@ -9,7 +10,7 @@ export default function handleDescription(
   containerResult.innerHTML = "";
 
   if (!respDetails.description) {
-    // Caso: Descrizione assente
+    // Case: Description absent
     containerResult.innerHTML += `
       <p>
         <h3>Description ${valueLi}</h3>
@@ -20,14 +21,14 @@ export default function handleDescription(
     typeof respDetails.description === "object" &&
     respDetails.description.value
   ) {
-    // Caso: Descrizione come oggetto
+    // Case: Description as object
     containerResult.innerHTML += `
       <p>
         <h3>${valueLi}</h3>
         ${respDetails.description.value}
       </p>`;
   } else {
-    // Caso: Descrizione come stringa, estrazione parziale
+    // Case: Description as string, partial extraction
     const extractedDetails = stringExtractor(
       respDetails.description,
       "Also contained in"
