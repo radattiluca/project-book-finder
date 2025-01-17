@@ -40,13 +40,12 @@ module.exports = {
     new Dotenv(),
   ],
   devServer: {
-    port: 3000,
     open: true,
     static: path.resolve(__dirname, "dist"),
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].bundle.js",
+    filename: "bundle.js",
   },
   optimization: {
     minimize: true,

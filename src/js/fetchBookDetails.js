@@ -19,6 +19,7 @@ export default function fetchBookDetails(
     console.log(respDetails.description); // Debug
 
     containerResult.innerHTML = "";
+    containerCoverBook.innerHTML = "";
 
     setTimeout(() => {
       handleDescription(respDetails, valueLi, containerResult);

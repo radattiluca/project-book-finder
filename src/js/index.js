@@ -32,14 +32,12 @@ document.addEventListener("click", function (event) {
 
     console.log(valueInput);
     // Axios request to the API at https://openlibrary.org for the category chosen by the user
-    fetchAuthors(newUrl, containerResult, containerCoverBook, collectedData)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.error("Error fetching book details:", error.message);
-        throw new Error(error.message);
-      });
+    fetchAuthors(
+      newUrl,
+      containerResult,
+      containerCoverBook,
+      collectedData
+    ).then((response) => {});
   }
   if (event.target.tagName === "LI") {
     // Handle the event when a book is clicked
@@ -74,9 +72,7 @@ document.addEventListener("click", function (event) {
       containerResult,
       containerCoverBook
     )
-      .then((response) => {
-        console.log(response);
-      })
+      .then((response) => {})
       .catch((error) => {
         console.error("Error fetching book details:", error.message);
         throw new Error(error.message);
