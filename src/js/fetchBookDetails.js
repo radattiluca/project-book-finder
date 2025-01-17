@@ -8,22 +8,22 @@ export default function fetchBookDetails(
   containerResult,
   containerCoverBook
 ) {
-  axios
-    .get(newUrlDetails)
-    .then((response) => {
-      const respDetails = response.data;
-      console.log(respDetails.description); // Debug
+  return axios.get(newUrlDetails).then((response) => {
+    // Check if the response status is what you expect
+    if (response.status !== 200) {
+      throw new Error(
+        `Request failed in fetchBookDetails with status ${response.status}`
+      );
+    }
+    const respDetails = response.data;
+    console.log(respDetails.description); // Debug
 
-      containerResult.innerHTML = "";
+    containerResult.innerHTML = "";
 
-      setTimeout(() => {
-        handleDescription(respDetails, valueLi, containerResult);
-      }, 2000);
+    setTimeout(() => {
+      handleDescription(respDetails, valueLi, containerResult);
+    }, 2000);
 
-      containerCoverBook.innerHTML += `<img src="https://covers.openlibrary.org/b/id/${numCover}-M.jpg?default=true" alt="${valueLi}">`;
-    })
-    .catch((error) => {
-      console.error("Error fetching book details:", error.message);
-      throw new Error(error.message);
-    });
+    containerCoverBook.innerHTML += `<img src="https://covers.openlibrary.org/b/id/${numCover}-M.jpg?default=true" alt="${valueLi}">`;
+  });
 }

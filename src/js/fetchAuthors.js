@@ -7,9 +7,15 @@ export default function fetchAuthors(
   containerCoverBook,
   collectedData
 ) {
-  axios
+  return axios
     .get(newUrl)
     .then((response) => {
+      // Check if the response status is what you expect
+      if (response.status !== 200) {
+        throw new Error(
+          `Request failed in fetchAuthors with status ${response.status}`
+        );
+      }
       const resp = response.data; // Access response data
       console.log(resp); // Debug
 
