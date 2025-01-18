@@ -40,6 +40,7 @@ html {
     display: flex;
     text-align: center;
     padding: 0 10px 10px 10px;
+    margin: auto;
 
     h1 {
       font-size: 1.5em;
@@ -48,16 +49,18 @@ html {
   .rowSearchBar {
     display: flex;
     justify-content: center;
+    margin: auto;
   }
   .rowResults {
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    flex-direction: column;
     max-width: 260px;
     padding: 30px 10px 0 10px;
     //overflow: scroll; inserire nello style pc
     word-wrap: break-word;
     line-height: 1.5em;
+    margin: auto;
 
     img {
       max-width: 100px;
@@ -105,31 +108,6 @@ html {
     align-items: center;
   }
 }
-.extra,
-.gridFooter {
-  height: 100%;
-}
-.gridFooter {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f9ad9c;
-  height: 100px;
-  padding: 10px;
-  color: $bg-color;
-  justify-content: center;
-
-  a {
-    text-decoration: none;
-  }
-  .item.log {
-    padding-top: 20px;
-    padding-left: 10px;
-  }
-  svg {
-    width: 40px;
-    height: 30px;
-    fill: $bg-color;
-    border-radius: 5px;
-  }
+.extra {
+  min-height: 270px;
 }
