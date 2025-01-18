@@ -36,24 +36,49 @@ html {
   h1 {
     color: $color-text;
   }
+  .rowTitle {
+    display: flex;
+    text-align: center;
+    padding: 0 10px 10px 10px;
 
+    h1 {
+      font-size: 1.5em;
+    }
+  }
+  .rowSearchBar {
+    display: flex;
+    justify-content: center;
+  }
   .rowResults {
-    max-width: 300px;
-    max-height: 700px;
-    padding-top: 30px;
-    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 260px;
+    padding: 30px 10px 0 10px;
+    //overflow: scroll; inserire nello style pc
     word-wrap: break-word;
     line-height: 1.5em;
 
-    h3 {
-      color: gray;
-      padding: 0 0 7px 0;
-    }
     img {
-      max-width: 150px;
+      max-width: 100px;
     }
     a {
       color: grey;
+    }
+    .containerCoverBook {
+      display: flex;
+      justify-content: center;
+    }
+    .containerTitleAuthors {
+      display: flex;
+      justify-content: center;
+      padding: 20px 0 0 0;
+
+      h3 {
+        color: gray;
+        padding: 0 0 7px 0;
+        text-align: center;
+      }
     }
 
     ul {

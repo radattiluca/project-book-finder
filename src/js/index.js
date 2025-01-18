@@ -1,8 +1,9 @@
-import "../scss/style.scss";
+import "../scss/styleMobile.scss";
 import "../scss/styleSearchBar.scss";
+import "../scss/footer.scss";
 import stringExtractor from "./stringExtractor";
-import spaceRemover from "./spaceRemover";
-import handleDescription from "./handleDescription";
+//import spaceRemover from "./spaceRemover";
+//import handleDescription from "./handleDescription";
 import generateUrl from "./generateUrl";
 import fetchBookDetails from "./fetchBookDetails";
 import fetchAuthors from "./fetchAuthors";

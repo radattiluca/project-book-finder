@@ -4,7 +4,7 @@ $color-borderBar: #ff9e82; //saturato
 .textbox {
   position: relative;
   margin: 20px 0;
-  width: 300px;
+  min-width: 240px;
 }
 
 .textbox input {

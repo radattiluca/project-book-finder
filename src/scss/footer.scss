@@ -1,0 +1,27 @@
+$bg-color: #065263; //sfumatura scuro di turchese.
+$color-text: #f9ad9c; //sfumatura chiaro di rosso
+
+.gridFooter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9ad9c;
+  height: 100px;
+  padding: 10px;
+  color: $bg-color;
+  justify-content: center;
+
+  a {
+    text-decoration: none;
+  }
+  .item.log {
+    padding-top: 20px;
+    padding-left: 10px;
+  }
+  svg {
+    width: 40px;
+    height: 30px;
+    fill: $bg-color;
+    border-radius: 5px;
+  }
+}
