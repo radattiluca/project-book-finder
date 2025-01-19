@@ -1,6 +1,6 @@
 $bg-color: #065263; //sfumatura scuro di turchese.
 $color-text: #f9ad9c; //sfumatura chiaro di rosso
-
+$shadow-container: inset 1px -12px 10px -4px rgba(12, 61, 72, 0.5);
 * {
   box-sizing: border-box;
   margin: 0;
@@ -20,11 +20,17 @@ html {
 }
 
 .headerStyle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  text-align: center;
   padding: 10px 0 20px 0;
   h1 {
     color: $color-text;
+  }
+  img {
+    width: 50px;
   }
 }
 
@@ -76,6 +82,7 @@ html {
       display: flex;
       justify-content: center;
       padding: 20px 0 0 0;
+      //box-shadow: $shadow-container; con overflow
 
       h3 {
         color: gray;
