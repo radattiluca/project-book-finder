@@ -1,9 +1,13 @@
 import "../scss/styleMobile.scss";
 import "../scss/styleSearchBar.scss";
 import "../scss/footer.scss";
+import "../scss/header.scss";
+import "../scss/styleTablet.scss";
+import "../scss/styleDesktop.scss";
 import stringExtractor from "./stringExtractor";
 //import spaceRemover from "./spaceRemover";
 //import handleDescription from "./handleDescription";
+
 import generateUrl from "./generateUrl";
 import fetchBookDetails from "./fetchBookDetails";
 import fetchAuthors from "./fetchAuthors";
@@ -16,6 +20,13 @@ const containerResult = document.querySelector(".containerTitleAuthors");
 const containerCoverBook = document.querySelector(".containerCoverBook");
 const categoryForm = document.querySelector("#category");
 const collectedData = [];
+
+import logoFn from "../components/logo/logo.js";
+const containerLogo = document.querySelector(".containerLogo");
+
+if (!containerLogo.querySelector(".my-logo")) {
+  containerLogo.appendChild(logoFn());
+}
 
 document.addEventListener("click", function (event) {
   if (event.target.tagName === "BUTTON") {

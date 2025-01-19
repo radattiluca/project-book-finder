@@ -1,7 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
-const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
   devtool: "eval-source-map",
@@ -25,6 +24,17 @@ module.exports = {
         test: /\.(css|s[ac]ss)$/i,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
+      {
+        test: /\.(jpe?g|png|webp)$/i,
+        use: {
+          loader: "img-optimize-loader",
+          options: {
+            compress: {
+              mode: "low",
+            },
+          },
+        },
+      },
     ],
   },
   plugins: [
@@ -46,16 +56,5 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
-  },
-  optimization: {
-    minimize: true,
-    minimizer: [
-      new TerserPlugin({
-        terserOptions: {
-          compress: true,
-          mangle: true,
-        },
-      }),
-    ],
   },
 };
