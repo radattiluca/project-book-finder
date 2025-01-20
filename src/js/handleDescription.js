@@ -1,5 +1,5 @@
 /** In this function we manage the description in the various cases that may occur to us*/
-import stringExtractor from "./stringExtractor";
+import stringExtractor from "../components/jsComponents/stringExtractor";
 
 export default function handleDescription(
   respDetails,

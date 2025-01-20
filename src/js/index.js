@@ -1,10 +1,5 @@
-import "../scss/styleMobile.scss";
-import "../scss/styleSearchBar.scss";
-import "../scss/footer.scss";
-import "../scss/header.scss";
-import "../scss/styleTablet.scss";
-import "../scss/styleDesktop.scss";
-import stringExtractor from "./stringExtractor";
+import "../styleScss/indexStyle.scss";
+import stringExtractor from "../components/jsComponents/stringExtractor.js";
 //import spaceRemover from "./spaceRemover";
 //import handleDescription from "./handleDescription";
 

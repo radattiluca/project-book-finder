@@ -1,5 +1,5 @@
 /** In this function the URL is generated with the data entered by the visitor*/
-import spaceRemover from "./spaceRemover";
+import spaceRemover from "../components/jsComponents/spaceRemover";
 
 export default function generateUrl(categoryForm) {
   // Ottieni e normalizza l'input dell'utente

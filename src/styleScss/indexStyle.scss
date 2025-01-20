@@ -1,0 +1,7 @@
+@use "./variables.scss";
+@use "./mediaQueries/styleMobile.scss";
+@use "./components/styleSearchBar";
+@use "./components/footer";
+@use "./components/header";
+@use "./mediaQueries/styleTablet";
+@use "./mediaQueries/styleDesktop";

@@ -1,0 +1,47 @@
+$bg-color: #065263; //sfumatura scuro di turchese.
+$color-text: #f9ad9c; //sfumatura chiaro di rosso
+$shadow-container: inset 1px -12px 10px -4px rgba(12, 61, 72, 0.5);
+
+//layout tablet
+@media only screen and (min-width: 430px) and (max-width: 960px) {
+  .headerStyle {
+    h1 {
+      font-size: 4em;
+      font-weight: 200;
+    }
+    img {
+      min-width: 70px;
+    }
+  }
+  .gridBody {
+    font-size: 2em;
+    img {
+      min-width: 160px;
+    }
+    .textbox input {
+      font-size: 1em;
+    }
+    .textbox label {
+      position: absolute;
+      top: 10px;
+      left: 5px;
+      font-size: 0.8em;
+    }
+    .textbox input:focus ~ label,
+    .textbox input:not(:placeholder-shown) ~ label {
+      top: -30px;
+      left: 0;
+      font-size: 0.8em;
+    }
+    .myButton {
+      height: 60px;
+      width: 100px;
+      font-size: 0.7em;
+      padding: 10px;
+      border-radius: 10px;
+    }
+  }
+  .rowResults {
+    min-width: 500px;
+  }
+}
