@@ -1,6 +1,9 @@
 $bg-color: #065263; //sfumatura scuro di turchese.
 $color-text: #f9ad9c; //sfumatura chiaro di rosso
 $shadow-container: inset 1px -12px 10px -4px rgba(12, 61, 72, 0.5);
+
+@import "./_header.scss";
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -101,5 +104,5 @@ html {
   }
 }
 .extra {
-  min-height: 270px;
+  min-height: 260px;
 }
