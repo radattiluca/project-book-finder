@@ -4,51 +4,54 @@
 @media only screen and (min-width: 1400px) {
   .headerStyle {
     h1 {
-      font-size: 3em;
+      font-size: 3.5em;
       font-weight: 200;
     }
     img {
-      min-width: 60px;
-      max-width: 60px;
+      min-width: 70px;
+      max-width: 70px;
     }
   }
   .gridBody {
     font-size: 1em;
     .rowTitle {
       h1 {
-        font-size: 2em;
+        font-size: 2.5em;
       }
     }
     .textbox input {
-      font-size: 1.2em;
+      font-size: 1.4em;
+      width: 300px;
     }
     .textbox label {
       position: absolute;
       top: 15px;
       left: 5px;
-      font-size: 1em;
+      font-size: 1.4em;
     }
     .textbox input:focus ~ label,
     .textbox input:not(:placeholder-shown) ~ label {
       top: -20px;
       left: 0;
-      font-size: 0.8em;
+      font-size: 1.2em;
     }
     .myButton {
       height: 40px;
       width: 80px;
-      font-size: 0.7em;
+      font-size: 1em;
       padding: 10px;
       border-radius: 10px;
     }
     .rowResults {
-      min-width: 600px;
-
+      min-width: 1000px;
+      font-size: 1.4em;
       img {
-        max-width: 120px;
+        max-width: 200px;
       }
       ul {
         li {
+          width: 500px;
+          text-align: left;
           margin: auto;
         }
       }
