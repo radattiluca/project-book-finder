@@ -1,7 +1,5 @@
 import "../styleScss/indexStyle.scss";
 import stringExtractor from "../components/jsComponents/stringExtractor.js";
-//import spaceRemover from "./spaceRemover";
-//import handleDescription from "./handleDescription";
 
 import generateUrl from "./generateUrl";
 import fetchBookDetails from "./fetchBookDetails";

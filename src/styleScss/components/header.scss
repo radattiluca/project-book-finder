@@ -1,5 +1,6 @@
-$color-text: #f9ad9c; //sfumatura chiaro di rosso
+@use "../variables.scss" as *;
 
+//layout header
 .headerStyle {
   display: flex;
   flex-direction: row;

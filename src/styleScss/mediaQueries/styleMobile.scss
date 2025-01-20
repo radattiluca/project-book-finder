@@ -1,6 +1,4 @@
-$bg-color: #065263; //sfumatura scuro di turchese.
-$color-text: #f9ad9c; //sfumatura chiaro di rosso
-$shadow-container: inset 1px -12px 10px -4px rgba(12, 61, 72, 0.5);
+@use "../variables.scss" as *;
 
 * {
   box-sizing: border-box;
@@ -25,9 +23,6 @@ html {
   grid-template-columns: auto;
   gap: 10px;
 
-  h1 {
-    color: $color-text;
-  }
   .rowTitle {
     display: flex;
     text-align: center;
@@ -36,6 +31,7 @@ html {
 
     h1 {
       font-size: 1.5em;
+      color: $color-text;
     }
   }
   .rowSearchBar {
@@ -49,7 +45,6 @@ html {
     flex-direction: column;
     max-width: 260px;
     padding: 30px 10px 0 10px;
-    //overflow: scroll; inserire nello style pc
     word-wrap: break-word;
     line-height: 1.5em;
     margin: auto;

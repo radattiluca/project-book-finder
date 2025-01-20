@@ -3,5 +3,7 @@
 @use "./components/styleSearchBar";
 @use "./components/footer";
 @use "./components/header";
+@use "./components/myButton";
 @use "./mediaQueries/styleTablet";
-@use "./mediaQueries/styleDesktop";
+@use "./mediaQueries/styleLaptop";
+@use "./mediaQueries/style4k";

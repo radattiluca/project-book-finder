@@ -1,6 +1,6 @@
-$bg-color: #065263; //sfumatura scuro di turchese.
-$color-text: #f9ad9c; //sfumatura chiaro di rosso
+@use "../variables.scss" as *;
 
+//layout footer
 .gridFooter {
   display: flex;
   flex-direction: column;

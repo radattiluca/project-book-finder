@@ -1,7 +1,7 @@
 @use "../variables.scss" as *;
 
-//layout tablet
-@media only screen and (min-width: 430px) and (max-width: 960px) {
+//layout for laptop
+@media only screen and (min-width: 961px) and (max-width: 1300px) {
   .headerStyle {
     h1 {
       font-size: 3em;
@@ -42,9 +42,15 @@
       border-radius: 10px;
     }
     .rowResults {
-      min-width: 450px;
+      min-width: 600px;
+
       img {
         max-width: 120px;
+      }
+      ul {
+        li {
+          margin: auto;
+        }
       }
     }
   }
