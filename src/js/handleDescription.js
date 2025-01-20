@@ -1,5 +1,6 @@
 /** In this function we manage the description in the various cases that may occur to us*/
 import stringExtractor from "../components/jsComponents/stringExtractor";
+const buttonGoBack = document.querySelector(".goBack");
 
 export default function handleDescription(
   respDetails,
@@ -8,7 +9,7 @@ export default function handleDescription(
 ) {
   // Reset container
   containerResult.innerHTML = "";
-
+  buttonGoBack.style.display = "block";
   if (!respDetails.description) {
     // Case: Description absent
     containerResult.innerHTML += `

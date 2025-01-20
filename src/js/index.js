@@ -1,5 +1,6 @@
 import "../styleScss/indexStyle.scss";
 import stringExtractor from "../components/jsComponents/stringExtractor.js";
+import goBack from "../components/jsComponents/goBack.js";
 
 import generateUrl from "./generateUrl";
 import fetchBookDetails from "./fetchBookDetails";
@@ -12,6 +13,8 @@ import _ from "lodash";
 const containerResult = document.querySelector(".containerTitleAuthors");
 const containerCoverBook = document.querySelector(".containerCoverBook");
 const categoryForm = document.querySelector("#category");
+const buttonGoBack = document.querySelector(".goBack");
+
 const collectedData = [];
 
 import logoFn from "../components/logo/logo.js";
@@ -82,5 +85,9 @@ document.addEventListener("click", function (event) {
         console.error("Error fetching book details:", error.message);
         throw new Error(error.message);
       });
+  }
+  if (event.target.className === "goBack") {
+    buttonGoBack.style.display = "none";
+    goBack(containerResult);
   }
 });

@@ -1,0 +1,10 @@
+@use "../variables.scss" as *;
+@use "../components/myButton.scss" as *;
+
+.goBack {
+  @extend .myButton;
+  max-width: 60px;
+  margin: auto;
+  display: none;
+  margin-top: 30px;
+}

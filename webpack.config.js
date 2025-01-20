@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
+const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 
 module.exports = {
   devtool: "eval-source-map",
@@ -48,6 +49,9 @@ module.exports = {
       },
     }),
     new Dotenv(),
+    new FaviconsWebpackPlugin(
+      "./src/components/logo/logo-book-finder-dark.png"
+    ),
   ],
   devServer: {
     open: true,
