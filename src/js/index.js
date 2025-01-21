@@ -24,6 +24,13 @@ if (!containerLogo.querySelector(".my-logo")) {
   containerLogo.appendChild(logoFn());
 }
 
+import iconFn from "../components/logo/iconMySite.js";
+const containerIcon = document.querySelector(".row-social-footer");
+
+if (!containerIcon.querySelector(".my-icon")) {
+  containerIcon.appendChild(iconFn());
+}
+
 document.addEventListener("click", function (event) {
   if (event.target.tagName === "BUTTON") {
     //user click on the search button
