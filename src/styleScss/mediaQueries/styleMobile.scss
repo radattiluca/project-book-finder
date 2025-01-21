@@ -6,12 +6,16 @@
   padding: 0;
 }
 
-body,
-html {
+body {
   background-color: $bg-color;
-  height: 100%;
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
 }
-
+.headerStyle {
+  min-height: 50px;
+}
 .wrapperColumn {
   display: flex;
   justify-content: center; /* Center the grid container horizontally */
@@ -38,7 +42,13 @@ html {
     display: flex;
     justify-content: center;
     margin: auto;
+    .textbox {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
   }
+
   .rowResults {
     display: flex;
     justify-content: center;
@@ -90,13 +100,7 @@ html {
     }
   }
 }
-.rowSearchBar {
-  .textbox {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-}
-.extra {
-  min-height: 260px;
+
+.footerStyle {
+  min-height: 50px;
 }
