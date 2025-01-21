@@ -15,7 +15,7 @@ export default function handleDescription(
     containerResult.innerHTML += `
       <p>
         <h3>Description ${valueLi}</h3>
-        Descrizione non presente, per maggiori info visitare il sito: 
+        Descrizione non presente, per maggiori info visitare il sito:
         <a href="https://openlibrary.org" target="_blank" rel="noopener noreferrer">openLibrary.org</a>
       </p>`;
   } else if (
