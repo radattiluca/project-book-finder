@@ -5,7 +5,7 @@ export default function detailsUrlDescription(foundBook) {
     console.log("Number cover id found:", foundBook.coverId);
     const keyBook = foundBook.key;
     const numCover = foundBook.coverId;
-    return { keyBook, numCover }; // Restituisci un oggetto
+    return { keyBook, numCover }; // return an object with the book key and the cover id
   } else {
     throw new Error("Book not found");
   }

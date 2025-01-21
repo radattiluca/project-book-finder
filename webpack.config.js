@@ -49,9 +49,23 @@ module.exports = {
       },
     }),
     new Dotenv(),
-    new FaviconsWebpackPlugin(
-      "./src/components/logo/logo-book-finder-dark.png"
-    ),
+    new FaviconsWebpackPlugin({
+      logo: path.resolve(__dirname, "src/components/logo/logo_favicon.png"),
+      favicons: {
+        appName: "Book Finder",
+        appDescription: "Book Finder",
+        developerName: "Rado94",
+        developerURL: "https://github.com/radattiluca",
+        icons: {
+          android: true,
+          appleIcon: true,
+          appleStartup: false,
+          favicons: true,
+          windows: false,
+          yandex: false,
+        },
+      },
+    }),
   ],
   devServer: {
     open: true,
