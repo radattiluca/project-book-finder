@@ -2,13 +2,14 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
+const { prototype } = require("events");
 
 module.exports = {
   devtool: "eval-source-map",
   entry: {
     index: "./src/js/index.js",
   },
-  mode: "development",
+  mode: "production",
   module: {
     rules: [
       {
@@ -69,6 +70,7 @@ module.exports = {
   ],
   devServer: {
     open: true,
+    port: 9000,
     static: path.resolve(__dirname, "dist"),
   },
   output: {
