@@ -9,7 +9,7 @@ import detailsUrlDescription from "./detailsUrlDescription";
 
 //import axios from "axios";
 import _ from "lodash";
-
+const containerEvent = document.querySelector(".wrapperColumn");
 const containerResult = document.querySelector(".containerTitleAuthors");
 const containerCoverBook = document.querySelector(".containerCoverBook");
 const categoryForm = document.querySelector("#category");
@@ -20,18 +20,19 @@ const collectedData = [];
 import logoFn from "../components/logo/logo.js";
 const containerLogo = document.querySelector(".containerLogo");
 
-if (!containerLogo.querySelector(".my-logo")) {
-  containerLogo.appendChild(logoFn());
-}
+//if (!containerLogo.querySelector(".my-logo")) {
+containerLogo.appendChild(logoFn());
+//}
 
 import iconFn from "../components/logo/iconMySite.js";
 const containerIcon = document.querySelector(".row-social-footer");
 
-if (!containerIcon.querySelector(".my-icon")) {
-  containerIcon.appendChild(iconFn());
-}
+//if (!containerIcon.querySelector(".my-icon")) {
+containerIcon.appendChild(iconFn());
+//}
 
-document.addEventListener("click", function (event) {
+containerEvent.addEventListener("click", function (event) {
+  console.log("è stato cliccato");
   if (event.target.tagName === "BUTTON") {
     //user click on the search button
     console.log(event.target.tagName); //for debugging
@@ -44,8 +45,8 @@ document.addEventListener("click", function (event) {
     }
     //we generate the url with the generateUrl function
     const newUrl = generateUrl(categoryForm);
-    console.log(newUrl); //for debugging
-    console.log(valueInput); //for debugging
+    //console.log(newUrl); //for debugging
+    //console.log(valueInput); //for debugging
 
     /**we send the fetch .get request with axios at https://openlibrary.org via the fetchAuthors function */
     fetchAuthors(
