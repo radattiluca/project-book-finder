@@ -2,12 +2,12 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
-const { prototype } = require("events");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   devtool: "eval-source-map",
   entry: {
-    index: "./src/js/index.js",
+    index: { import: "./src/js/index.js" },
   },
   mode: "production",
   module: {
@@ -24,7 +24,7 @@ module.exports = {
       },
       {
         test: /\.(css|s[ac]ss)$/i,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
         test: /\.(jpe?g|png|webp)$/i,
@@ -39,7 +39,17 @@ module.exports = {
       },
     ],
   },
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+      minSize: 20000,
+      maxSize: 50000,
+    },
+  },
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: "[name].[contenthash].css",
+    }),
     new HtmlWebpackPlugin({
       title: "Book Finder",
       template: "./src/index.html",
@@ -70,11 +80,11 @@ module.exports = {
   ],
   devServer: {
     open: true,
-    port: 9000,
     static: path.resolve(__dirname, "dist"),
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    filename: "[name].[contenthash].js",
+    clean: true,
   },
 };

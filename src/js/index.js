@@ -7,8 +7,8 @@ import fetchBookDetails from "./fetchBookDetails";
 import fetchAuthors from "./fetchAuthors";
 import detailsUrlDescription from "./detailsUrlDescription";
 
-//import axios from "axios";
 import _ from "lodash";
+
 const containerEvent = document.querySelector(".wrapperColumn");
 const containerResult = document.querySelector(".containerTitleAuthors");
 const containerCoverBook = document.querySelector(".containerCoverBook");
