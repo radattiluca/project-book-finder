@@ -1,10 +1,10 @@
 /** In this function the URL is generated with the data entered by the visitor*/
 import spaceRemover from "../components/jsComponents/spaceRemover";
 
-export default function generateUrl(categoryForm) {
-  // Ottieni e normalizza l'input dell'utente
-  let valueInput = categoryForm.value.toLowerCase();
-
+export default function generateUrl(categoryForm, valueInput) {
+  /**the valueInput constant takes the value typed by the user in the textbox and first removes the outer spaces of the string with .trim() and then converts the string to lowercase. */
+  valueInput = categoryForm.value.trim().toLowerCase();
+  console.log(valueInput);
   if (valueInput === "") {
     throw new Error("Enter a category first");
   }

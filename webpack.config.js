@@ -9,7 +9,7 @@ module.exports = {
   entry: {
     index: { import: "./src/js/index.js" },
   },
-  mode: "production",
+  mode: "development",
   module: {
     rules: [
       {

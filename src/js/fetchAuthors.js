@@ -45,7 +45,7 @@ export default function fetchAuthors(
         });
 
         // Populate the containerResult with titles and authors
-        containerResult.innerHTML += `<li>${objTitle} - ${objAuthors}</li>`;
+        containerResult.innerHTML += `<li id="${objKey}">${objTitle} - ${objAuthors}</li>`;
       });
       return { collectedData, containerResult, containerCoverBook };
     })

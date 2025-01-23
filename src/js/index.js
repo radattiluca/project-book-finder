@@ -40,16 +40,10 @@ if (!window.isEventListenerAttached) {
       //user click on the search button
       console.log(event.target.tagName); //for debugging
       event.preventDefault(); //to block the default submit event
-      /**the valueInput constant takes the value typed by the user in the textbox and first removes the outer spaces of the string with .trim() and then converts the string to lowercase. */
-      const valueInput = categoryForm.value.trim().toLowerCase();
-      /**this if returns an error if the user does not enter a category and presses the search button */
-      if (!valueInput) {
-        throw new Error("Enter a category first");
-      }
+
+      let valueInput = "";
       //we generate the url with the generateUrl function
       const newUrl = generateUrl(categoryForm);
-      //console.log(newUrl); //for debugging
-      //console.log(valueInput); //for debugging
 
       /**we send the fetch .get request with axios at https://openlibrary.org via the fetchAuthors function */
       fetchAuthors(
@@ -64,6 +58,8 @@ if (!window.isEventListenerAttached) {
 
       /**the variable valueLi takes the value containing in the clicked LI element */
       let valueLi = event.target.textContent;
+      let valueId = event.target.id;
+      console.log("questo ' l'id" + valueId); //for debugging
 
       /**We extract the entire string before the "-" character to have only the title of the book without the author, using the stringExtractor function */
       const extractedTitle = stringExtractor(valueLi, " - ");
