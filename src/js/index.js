@@ -58,8 +58,6 @@ if (!window.isEventListenerAttached) {
 
       /**the variable valueLi takes the value containing in the clicked LI element */
       let valueLi = event.target.textContent;
-      let valueId = event.target.id;
-      console.log("questo ' l'id" + valueId); //for debugging
 
       /**We extract the entire string before the "-" character to have only the title of the book without the author, using the stringExtractor function */
       const extractedTitle = stringExtractor(valueLi, " - ");
@@ -73,9 +71,6 @@ if (!window.isEventListenerAttached) {
 
       /**from the correspondence found, the identification key of the book and the number identified for the book cover are returned */
       const { keyBook, numCover } = detailsUrlDescription(foundBook);
-
-      console.log(keyBook); //for debuggin
-      console.log(numCover); //for debuggin
 
       /**the book key is used to create the url and send a new fetch request for the details of the book selected by the user */
       let newUrlDetails = new URL(
