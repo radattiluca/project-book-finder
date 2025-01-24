@@ -9,7 +9,7 @@ module.exports = {
   entry: {
     index: { import: "./src/js/index.js" },
   },
-  mode: "development",
+  mode: "production",
   module: {
     rules: [
       {
@@ -61,15 +61,15 @@ module.exports = {
     }),
     new Dotenv(),
     new FaviconsWebpackPlugin({
-      logo: path.resolve(__dirname, "src/components/logo/logo_favicon.png"),
+      logo: path.resolve(__dirname, "src/components/img/logo_favicon.png"),
       favicons: {
         appName: "Book Finder",
         appDescription: "Book Finder",
         developerName: "Rado94",
         developerURL: "https://github.com/radattiluca",
         icons: {
-          android: true,
-          appleIcon: true,
+          android: false,
+          appleIcon: false,
           appleStartup: false,
           favicons: true,
           windows: false,
