@@ -15,8 +15,6 @@ const containerCoverBook = document.querySelector(".containerCoverBook");
 const categoryForm = document.querySelector("#category");
 const buttonGoBack = document.querySelector(".goBack");
 
-const collectedData = [];
-
 import logoFn from "../components/logo/logo.js";
 const containerLogo = document.querySelector(".containerLogo");
 
@@ -30,6 +28,8 @@ const containerIcon = document.querySelector(".row-social-footer");
 if (!containerIcon.querySelector(".my-icon")) {
   containerIcon.appendChild(iconFn());
 }
+
+const collectedData = [];
 
 // Prevenire la duplicazione del listener
 if (!window.isEventListenerAttached) {
