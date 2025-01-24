@@ -76,7 +76,7 @@ Grazie all’integrazione con dati e recensioni, offre una piattaforma completa 
 
 ## Applicazione
 
-Al sequente link potete trovare e provare l'applicazione --> https://tomatocounter.netlify.app/
+Al sequente link potete trovare e provare l'applicazione --> https://bookfinder.netlify.app/
 
 
 ## Contatti
