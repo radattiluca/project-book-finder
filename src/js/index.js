@@ -17,11 +17,12 @@ const buttonGoBack = document.querySelector(".goBack");
 
 import logoFn from "../components/logo/logo.js";
 const containerLogo = document.querySelector(".containerLogo");
-
+//Prevent image duplication
 if (!containerLogo.querySelector(".my-logo")) {
   containerLogo.appendChild(logoFn());
 }
 
+//Creation of the link and insertion of the image
 import iconFn from "../components/logo/iconMySite.js";
 const containerIcon = document.querySelector(".row-social-footer");
 const linkMySite = document.createElement("a");
@@ -29,13 +30,14 @@ linkMySite.href = "https://radattiluca.github.io./";
 linkMySite.target = "_blank";
 linkMySite.appendChild(iconFn());
 
+//Prevent image duplication
 if (!containerIcon.querySelector(".my-icon")) {
   containerIcon.appendChild(linkMySite);
 }
 
 const collectedData = [];
 
-// Prevenire la duplicazione del listener
+// Prevent listener duplication
 if (!window.isEventListenerAttached) {
   window.isEventListenerAttached = true;
 
