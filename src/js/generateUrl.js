@@ -6,6 +6,7 @@ export default function generateUrl(categoryForm, valueInput) {
   valueInput = categoryForm.value.trim().toLowerCase();
   console.log(valueInput);
   if (valueInput === "") {
+    alert("Enter a category first");
     throw new Error("Enter a category first");
   }
 

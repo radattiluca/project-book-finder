@@ -12,6 +12,7 @@ export default function fetchAuthors(
     .then((response) => {
       // Check if the response status is what you expect
       if (response.status !== 200) {
+        alert("Oops something went wrong");
         throw new Error(
           `Request failed in fetchAuthors with status ${response.status}`
         );
@@ -22,6 +23,7 @@ export default function fetchAuthors(
       const authors = _.get(resp, "works", []); // Extract the array of objects containing authors and book titles
 
       if (authors.length === 0) {
+        alert("The category entered is invalid");
         throw new Error("The category entered is invalid");
       }
 

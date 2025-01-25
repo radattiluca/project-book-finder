@@ -11,6 +11,7 @@ export default function fetchBookDetails(
   return axios.get(newUrlDetails).then((response) => {
     // Check if the response status is what you expect
     if (response.status !== 200) {
+      alert("Oops something went wrong");
       throw new Error(
         `Request failed in fetchBookDetails with status ${response.status}`
       );
