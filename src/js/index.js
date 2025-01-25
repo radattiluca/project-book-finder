@@ -24,9 +24,13 @@ if (!containerLogo.querySelector(".my-logo")) {
 
 import iconFn from "../components/logo/iconMySite.js";
 const containerIcon = document.querySelector(".row-social-footer");
+const linkMySite = document.createElement("a");
+linkMySite.href = "https://radattiluca.github.io./";
+linkMySite.target = "_blank";
+linkMySite.appendChild(iconFn());
 
 if (!containerIcon.querySelector(".my-icon")) {
-  containerIcon.appendChild(iconFn());
+  containerIcon.appendChild(linkMySite);
 }
 
 const collectedData = [];
